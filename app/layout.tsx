@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './envelope.css';
+import './gallery.css';
 
 export const metadata: Metadata = {
   title: 'Баярын мэнд, миний хайр ♥',

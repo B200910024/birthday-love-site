@@ -8,6 +8,14 @@ const reasons = [
   ['03', 'Яг өөрөөрөө байдагт', 'Чиний тэр хөөрхөн зан бүхэнд би хайртай.'],
 ];
 
+const memories = [
+  ['photo-1.jpg', 'Бидний эхлэл', 'Анхны дурсамж'],
+  ['photo-2.jpg', 'Хамгийн гоё өдөр', 'Инээмсэглэл дүүрэн'],
+  ['photo-3.jpg', 'Чиний дуртай мөч', 'Зөвхөн бид хоёр'],
+  ['photo-4.jpg', 'Жижигхэн аз жаргал', 'Мартагдашгүй өдөр'],
+  ['photo-5.jpg', 'Үргэлж хамтдаа', 'Дараагийн адал явдал'],
+];
+
 export default function Home() {
   const [opened, setOpened] = useState(false);
 
@@ -29,6 +37,22 @@ export default function Home() {
       <section className="reasons" id="reasons">
         <div className="section-head"><p className="eyebrow">ЧАМАЙГ ХАЙРЛАХ ШАЛТГААНУУДААС</p><h2>Тоолж барахгүй ч,<br/>эндээс эхэлье.</h2></div>
         <div className="reason-grid">{reasons.map(([number,title,copy])=><article key={number}><span>{number}</span><div className="mini-heart">♥</div><h3>{title}</h3><p>{copy}</p></article>)}</div>
+      </section>
+      <section className="memories" id="memories">
+        <div className="memories-heading">
+          <div><p className="eyebrow">БИДНИЙ НАНДИН МӨЧҮҮД</p><h2>Зураг бүрийн цаана<br/><em>бидний түүх бий.</em></h2></div>
+          <p className="memories-intro">Хамтдаа өнгөрүүлсэн мөч бүрээс тавхан ширхэгийг нь энд хадгаллаа. Цаашдаа энэ цуглуулга улам баяжина.</p>
+        </div>
+        <div className="photo-wall">
+          {memories.map(([file,title,caption],index)=><figure className={`memory-card memory-${index+1}`} key={file}>
+            <div className="photo-frame">
+              <div className="photo-placeholder"><span>{String(index+1).padStart(2,'0')}</span><b>♡</b><small>Энд бидний зураг</small></div>
+              <img src={`/photos/${file}`} alt={title} onError={(event)=>{event.currentTarget.style.display='none'}} />
+            </div>
+            <figcaption><strong>{title}</strong><span>{caption}</span></figcaption>
+          </figure>)}
+        </div>
+        <div className="photo-note"><span>✦</span><p>Зураг нэмэхдээ <b>public/photos</b> хавтсанд <b>photo-1.jpg</b> — <b>photo-5.jpg</b> нэрээр хийгээрэй.</p></div>
       </section>
       <section className="letter-wrap" id="letter">
         <p className="letter-kicker">ЧАМД ИРСЭН НЭГЭН БЯЦХАН ЗАХИА</p>
