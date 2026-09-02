@@ -31,8 +31,16 @@ export default function Home() {
         <div className="reason-grid">{reasons.map(([number,title,copy])=><article key={number}><span>{number}</span><div className="mini-heart">♥</div><h3>{title}</h3><p>{copy}</p></article>)}</div>
       </section>
       <section className="letter-wrap" id="letter">
-        <div className={`envelope ${opened?'open':''}`}><div className="letter"><p className="hand">Миний хайртдаа,</p><p>Өнөөдөр чиний инээмсэглэл жирийн өдрөөс арай удаан үргэлжлээсэй. Чиний хүссэн бүхэн биелж, зүрх чинь аз жаргалаар дүүрэн байгаасай.</p><p>Хажууд минь байж, намайг байгаагаар минь хайрладагт баярлалаа. Өнөөдрөөс эхлэх шинэ дурсамж бүрээ чамтайгаа бүтээхийг хүсэж байна.</p><p className="signature">Үргэлж чинийх ♥</p></div><div className="envelope-front"><span>♥</span></div></div>
-        {!opened?<button onClick={()=>setOpened(true)}>Захиагаа нээх <span>💌</span></button>:<p className="opened-note">Чамдаа маш их хайртай шүү ♡</p>}
+        <p className="letter-kicker">ЧАМД ИРСЭН НЭГЭН БЯЦХАН ЗАХИА</p>
+        <div className={`envelope ${opened?'open':''}`} aria-live="polite">
+          <div className="envelope-back" />
+          <div className="envelope-flap" />
+          <div className="letter"><p className="hand">Миний хайртдаа,</p><p>Өнөөдөр чиний инээмсэглэл жирийн өдрөөс арай удаан үргэлжлээсэй. Чиний хүссэн бүхэн биелж, зүрх чинь аз жаргалаар дүүрэн байгаасай.</p><p>Хажууд минь байж, намайг байгаагаар минь хайрладагт баярлалаа. Өнөөдрөөс эхлэх шинэ дурсамж бүрээ чамтайгаа бүтээхийг хүсэж байна.</p><p className="signature">Үргэлж чинийх ♥</p></div>
+          <div className="envelope-front"><span className="seal">♥</span></div>
+        </div>
+        <div className="letter-actions">
+          {!opened ? <button aria-expanded="false" onClick={()=>setOpened(true)}>Захиагаа нээх <span>💌</span></button> : <><p className="opened-note">Чамдаа маш их хайртай шүү ♡</p><button className="close-letter" aria-expanded="true" onClick={()=>setOpened(false)}>Захиагаа хаах <span>↓</span></button></>}
+        </div>
       </section>
       <footer><p>Made with <span>♥</span> just for you</p><small>2026 · Бидний гоё дурсамжууд үргэлжилсээр...</small></footer>
     </main>

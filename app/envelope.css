@@ -1,0 +1,29 @@
+.letter-wrap { min-height: 920px; padding-top: 150px; }
+.letter-kicker { margin: 0 0 12px; color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .24em; }
+.envelope { height: 430px; margin-top: 28px; perspective: 1200px; }
+.envelope-back { position: absolute; inset: 100px 0 0; border-radius: 4px 4px 12px 12px; background: #e996a7; box-shadow: 0 25px 65px #7b34432b; }
+.envelope-flap { position: absolute; left: 0; right: 0; top: 100px; height: 205px; background: #f3b0bd; clip-path: polygon(0 0,50% 100%,100% 0); transform-origin: top center; transform: rotateX(0deg); transition: transform .75s cubic-bezier(.4,0,.2,1), z-index 0s .35s; z-index: 4; backface-visibility: hidden; }
+.envelope-front { inset: 100px 0 0; border-radius: 0 0 12px 12px; clip-path: polygon(0 0,50% 45%,100% 0,100% 100%,0 100%); }
+.letter { bottom: 36px; z-index: 2; transform: translateY(0) scale(.96); max-height: 310px; overflow: hidden; }
+.seal { top: 43% !important; transition: opacity .25s, transform .35s !important; }
+.open .envelope-flap { transform: rotateX(180deg); z-index: 1; transition: transform .75s cubic-bezier(.4,0,.2,1), z-index 0s .35s; }
+.open .letter { transform: translateY(-270px) scale(1); z-index: 3; max-height: 500px; }
+.open .seal { opacity: 0; transform: translate(-50%,-50%) scale(.5) !important; }
+.letter-actions { position: relative; z-index: 5; min-height: 105px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.opened-note { margin: 0; }
+.close-letter { background: transparent !important; color: var(--ink) !important; border: 1px solid #d9bfc2 !important; box-shadow: none !important; padding: 11px 19px !important; }
+.close-letter:hover { background: #fff !important; }
+.close-letter span { display: inline-block; margin-left: 6px; }
+.letter-wrap button:focus-visible { outline: 3px solid #f08ba0; outline-offset: 4px; }
+
+@media (max-width:800px) {
+  .letter-wrap { min-height: 940px; padding-top: 135px; }
+  .envelope { height: 400px; }
+  .envelope-back, .envelope-flap { top: 90px; }
+  .envelope-front { inset: 90px 0 0; }
+  .envelope-flap { height: 155px; }
+  .letter { bottom: 28px; max-height: 290px; }
+  .open .letter { transform: translateY(-285px) scale(1); }
+  .letter-actions { min-height: 125px; }
+  .opened-note { margin: 0; }
+}
