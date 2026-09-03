@@ -36,3 +36,12 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# local deployment packages
+/.site-package/
+/site-build*.tar.gz
+
+# private photos stay local by default
+/public/photos/*.jpg
+/public/photos/*.jpeg
+/public/photos/*.png
