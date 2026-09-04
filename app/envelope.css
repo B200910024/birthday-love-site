@@ -39,6 +39,29 @@
   background: linear-gradient(135deg, transparent 49.7%, #ffffff20 50%, transparent 50.3%);
 }
 
+.envelope-open-flap {
+  position: absolute;
+  top: -96px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 208px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: linear-gradient(165deg, #f9c8d1 0%, #eca0b0 100%);
+  opacity: 0;
+  transform: translateY(18px) scaleY(.82);
+  transform-origin: bottom center;
+  transition: opacity .22s .62s ease, transform .45s .5s cubic-bezier(.2, .8, .2, 1);
+}
+
+.envelope-open-flap::after {
+  content: "";
+  position: absolute;
+  inset: 12px 14px 0;
+  clip-path: inherit;
+  background: linear-gradient(165deg, #ffe0e5 0%, #f4b5c1 100%);
+}
+
 .envelope-flap {
   position: absolute;
   top: 110px;
@@ -91,7 +114,7 @@
 
 .seal {
   position: absolute;
-  top: 255px !important;
+  top: 269px !important;
   left: 50%;
   z-index: 8;
   display: grid !important;
@@ -105,7 +128,8 @@
   font: 30px/1 Georgia, serif;
   box-shadow: 0 8px 18px #9f30474d, inset 0 2px 2px #ffffff4d;
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1) !important;
+  translate: -50% -50%;
+  transform: scale(1) !important;
   transition: opacity .22s .95s ease, transform .32s .9s ease !important;
 }
 
@@ -125,6 +149,12 @@
     z-index 0s .36s;
 }
 
+.envelope.open .envelope-open-flap {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  transition: opacity .18s .3s ease, transform .48s .25s cubic-bezier(.2, .8, .2, 1);
+}
+
 .envelope.open .letter {
   z-index: 3;
   max-height: 540px;
@@ -139,7 +169,7 @@
 .envelope.open .seal {
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(.45) rotate(-12deg) !important;
+  transform: scale(.45) rotate(-12deg) !important;
   transition: opacity .2s ease, transform .28s ease !important;
 }
 
@@ -167,10 +197,11 @@
   .envelope-flap { top: 95px; height: 160px; }
   .letter { right: 5%; bottom: 30px; left: 5%; max-height: 300px; padding: 30px 24px; font-size: 14px; }
   .envelope.open .letter { max-height: 560px; transform: translateY(-315px) scale(1); }
-  .seal { top: 225px !important; width: 58px !important; height: 58px !important; font-size: 27px; }
+  .envelope-open-flap { top: -64px; height: 160px; }
+  .seal { top: 249px !important; width: 58px !important; height: 58px !important; font-size: 27px; }
   .letter-actions { min-height: 125px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .envelope-flap, .letter, .seal { transition-duration: .01ms !important; transition-delay: 0s !important; }
+  .envelope-flap, .envelope-open-flap, .letter, .seal { transition-duration: .01ms !important; transition-delay: 0s !important; }
 }
