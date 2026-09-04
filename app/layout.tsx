@@ -4,6 +4,11 @@ import './envelope.css';
 import './gallery.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : 'https://from-temuujin-to-ariuka.funtemuujin.chatgpt.site',
+  ),
   title: 'Баярын мэнд, миний хайр ♥',
   description: 'Хамгийн онцгой хүнд зориулсан жижигхэн хайрын захиа.',
   icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }] },
